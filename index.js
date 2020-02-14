@@ -47,3 +47,11 @@ const onInput = async (event) => {
 };
 
 input.addEventListener("input", debounce(onInput));
+
+// Clicking on an element gives the element a value of $0
+// $0 is a valid js identifier. eventListeners bubble up
+document.addEventListener("click", event => {
+    if (!root.contains(event.target)) {
+        dropdown.classList.remove("is-active");
+    }
+});
