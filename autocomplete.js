@@ -22,6 +22,7 @@ const createAutoComplete = ({
     const onInput = async (event) => {
         const items = await fetchData(event.target.value);
 
+        // Deactivate dropdown if items is nil
         if (!items.length) {
             dropdown.classList.remove("is-active");
             return;
@@ -49,6 +50,7 @@ const createAutoComplete = ({
 
     input.addEventListener("input", debounce(onInput));
 
+    // Implementation to remove dropdown if anywhere is clicked
     // Clicking on an element gives the element a value of $0
     // $0 is a valid js identifier. eventListeners bubble up
     document.addEventListener("click", event => {
